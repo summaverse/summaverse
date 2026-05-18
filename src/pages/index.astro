@@ -12,39 +12,149 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+
+		<!-- Hero -->
+		<section class="hero">
+			<div class="hero-overlay"></div>
+			<img
+				class="hero-img"
+				src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+				alt="Four people standing on a mountain summit at golden hour"
+			/>
+			<div class="hero-content">
+				<h1>Welcome to the Summaverse</h1>
+				<p class="tagline">Every summit begins with a single step</p>
+			</div>
+			<div class="scroll-hint">
+				<span>↓</span>
+			</div>
+		</section>
+
+		<!-- Video -->
+		<section class="video-section">
+			<div class="video-inner">
+				<h2>Watch &amp; Be Inspired</h2>
+				<div class="video-wrapper">
+					<iframe
+						src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+						title="Inspirational Video"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen
+					></iframe>
+				</div>
+			</div>
+		</section>
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+	html, body {
+		margin: 0;
+		padding: 0;
+		scroll-behavior: smooth;
+	}
+
+	/* ── Hero ── */
+	.hero {
+		position: relative;
+		height: 100vh;
+		min-height: 500px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+	.hero-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 40%;
+		border-radius: 0;
+	}
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			160deg,
+			rgba(0, 0, 0, 0.55) 0%,
+			rgba(0, 0, 0, 0.35) 50%,
+			rgba(0, 0, 0, 0.65) 100%
+		);
+		z-index: 1;
+	}
+	.hero-content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		color: #fff;
+		padding: 0 1.5em;
+		max-width: 860px;
+	}
+	.hero-content h1 {
+		font-size: clamp(2.2rem, 6vw, 5rem);
+		color: #fff;
+		margin: 0 0 0.4em;
+		letter-spacing: 0.04em;
+		text-shadow: 0 3px 30px rgba(0, 0, 0, 0.6);
+		line-height: 1.1;
+	}
+	.tagline {
+		font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+		color: #d4a843;
+		margin: 0;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+	}
+	.scroll-hint {
+		position: absolute;
+		bottom: 2em;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 1.5em;
+		animation: bounce 2s infinite;
+	}
+	@keyframes bounce {
+		0%, 100% { transform: translateX(-50%) translateY(0); }
+		50%       { transform: translateX(-50%) translateY(8px); }
+	}
+
+	/* ── Video ── */
+	.video-section {
+		background: #0a0a0a;
+		padding: 5em 2em 6em;
+	}
+	.video-inner {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.video-inner h2 {
+		color: #d4a843;
+		font-size: clamp(1.4rem, 3vw, 2rem);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin: 0 0 1.5em;
+	}
+	.video-wrapper {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+		border: 1px solid rgba(212, 168, 67, 0.15);
+	}
+	.video-wrapper iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
